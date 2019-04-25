@@ -20,11 +20,11 @@ import (
 	path "path/filepath"
 	"strings"
 
-	"github.com/beego/bee/cmd/commands"
-	"github.com/beego/bee/cmd/commands/version"
-	"github.com/beego/bee/generate"
-	beeLogger "github.com/beego/bee/logger"
-	"github.com/beego/bee/utils"
+	"github.com/spiritclips/bee/cmd/commands"
+	"github.com/spiritclips/bee/cmd/commands/version"
+	"github.com/spiritclips/bee/generate"
+	beeLogger "github.com/spiritclips/bee/logger"
+	"github.com/spiritclips/bee/utils"
 )
 
 var CmdApiapp = &commands.Command{
@@ -72,7 +72,7 @@ var apiMaingo = `package main
 import (
 	_ "{{.Appname}}/routers"
 
-	"github.com/astaxie/beego"
+	"github.com/spiritclips/beego"
 )
 
 func main() {
@@ -89,8 +89,8 @@ var apiMainconngo = `package main
 import (
 	_ "{{.Appname}}/routers"
 
-	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
+	"github.com/spiritclips/beego"
+	"github.com/spiritclips/beego/orm"
 	{{.DriverPkg}}
 )
 
@@ -117,7 +117,7 @@ package routers
 import (
 	"{{.Appname}}/controllers"
 
-	"github.com/astaxie/beego"
+	"github.com/spiritclips/beego"
 )
 
 func init() {
@@ -286,7 +286,7 @@ import (
 	"{{.Appname}}/models"
 	"encoding/json"
 
-	"github.com/astaxie/beego"
+	"github.com/spiritclips/beego"
 )
 
 // Operations about object
@@ -379,7 +379,7 @@ import (
 	"{{.Appname}}/models"
 	"encoding/json"
 
-	"github.com/astaxie/beego"
+	"github.com/spiritclips/beego"
 )
 
 // Operations about Users
@@ -504,7 +504,7 @@ import (
 	"path/filepath"
 	_ "{{.Appname}}/routers"
 
-	"github.com/astaxie/beego"
+	"github.com/spiritclips/beego"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

@@ -23,9 +23,9 @@ import (
 	"regexp"
 	"strings"
 
-	beeLogger "github.com/beego/bee/logger"
-	"github.com/beego/bee/logger/colors"
-	"github.com/beego/bee/utils"
+	beeLogger "github.com/spiritclips/bee/logger"
+	"github.com/spiritclips/bee/logger/colors"
+	"github.com/spiritclips/bee/utils"
 	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/lib/pq"
 )
@@ -992,7 +992,7 @@ import (
 	"reflect"
 	"strings"
 	{{timePkg}}
-	"github.com/astaxie/beego/orm"
+	"github.com/spiritclips/beego/orm"
 )
 
 {{modelStruct}}
@@ -1141,7 +1141,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/astaxie/beego"
+	"github.com/spiritclips/beego"
 )
 
 // {{ctrlName}}Controller operations for {{ctrlName}}
@@ -1316,7 +1316,7 @@ package routers
 import (
 	"{{pkgPath}}/controllers"
 
-	"github.com/astaxie/beego"
+	"github.com/spiritclips/beego"
 )
 
 func init() {

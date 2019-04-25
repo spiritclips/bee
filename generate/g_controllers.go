@@ -20,9 +20,9 @@ import (
 	"path"
 	"strings"
 
-	beeLogger "github.com/beego/bee/logger"
-	"github.com/beego/bee/logger/colors"
-	"github.com/beego/bee/utils"
+	beeLogger "github.com/spiritclips/bee/logger"
+	"github.com/spiritclips/bee/logger/colors"
+	"github.com/spiritclips/bee/utils"
 )
 
 func GenerateController(cname, currpath string) {
@@ -78,7 +78,7 @@ func GenerateController(cname, currpath string) {
 var controllerTpl = `package {{packageName}}
 
 import (
-	"github.com/astaxie/beego"
+	"github.com/spiritclips/beego"
 )
 
 // {{controllerName}}Controller operations for {{controllerName}}
@@ -166,7 +166,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/astaxie/beego"
+	"github.com/spiritclips/beego"
 )
 
 //  {{controllerName}}Controller operations for {{controllerName}}

@@ -20,11 +20,11 @@ import (
 	path "path/filepath"
 	"strings"
 
-	"github.com/beego/bee/cmd/commands"
-	"github.com/beego/bee/cmd/commands/version"
-	beeLogger "github.com/beego/bee/logger"
-	"github.com/beego/bee/logger/colors"
-	"github.com/beego/bee/utils"
+	"github.com/spiritclips/bee/cmd/commands"
+	"github.com/spiritclips/bee/cmd/commands/version"
+	beeLogger "github.com/spiritclips/bee/logger"
+	"github.com/spiritclips/bee/logger/colors"
+	"github.com/spiritclips/bee/utils"
 )
 
 var CmdNew = &commands.Command{
@@ -66,7 +66,7 @@ var maingo = `package main
 
 import (
 	_ "{{.Appname}}/routers"
-	"github.com/astaxie/beego"
+	"github.com/spiritclips/beego"
 )
 
 func main() {
@@ -78,7 +78,7 @@ var router = `package routers
 
 import (
 	"{{.Appname}}/controllers"
-	"github.com/astaxie/beego"
+	"github.com/spiritclips/beego"
 )
 
 func init() {
@@ -96,7 +96,7 @@ import (
 	"path/filepath"
 	_ "{{.Appname}}/routers"
 
-	"github.com/astaxie/beego"
+	"github.com/spiritclips/beego"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -130,7 +130,7 @@ func TestBeego(t *testing.T) {
 var controllers = `package controllers
 
 import (
-	"github.com/astaxie/beego"
+	"github.com/spiritclips/beego"
 )
 
 type MainController struct {

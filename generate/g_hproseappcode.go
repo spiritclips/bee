@@ -24,9 +24,9 @@ import (
 	"path"
 	"strings"
 
-	beeLogger "github.com/beego/bee/logger"
-	"github.com/beego/bee/logger/colors"
-	"github.com/beego/bee/utils"
+	beeLogger "github.com/spiritclips/bee/logger"
+	"github.com/spiritclips/bee/logger/colors"
+	"github.com/spiritclips/bee/utils"
 	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/lib/pq"
 )
@@ -47,7 +47,7 @@ import (
 	"{{.Appname}}/models"
 	"github.com/hprose/hprose-golang/rpc"
 
-	"github.com/astaxie/beego"
+	"github.com/spiritclips/beego"
 )
 
 func logInvokeHandler(
@@ -90,8 +90,8 @@ import (
 	"{{.Appname}}/models"
 	"github.com/hprose/hprose-golang/rpc"
 
-	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
+	"github.com/spiritclips/beego"
+	"github.com/spiritclips/beego/orm"
 	{{.DriverPkg}}
 )
 
@@ -419,7 +419,7 @@ import (
 	"reflect"
 	"strings"
 	{{timePkg}}
-	"github.com/astaxie/beego/orm"
+	"github.com/spiritclips/beego/orm"
 )
 
 {{modelStruct}}

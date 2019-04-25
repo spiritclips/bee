@@ -14,10 +14,10 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/beego/bee/cmd/commands"
-	beeLogger "github.com/beego/bee/logger"
-	"github.com/beego/bee/logger/colors"
-	"github.com/beego/bee/utils"
+	"github.com/spiritclips/bee/cmd/commands"
+	beeLogger "github.com/spiritclips/bee/logger"
+	"github.com/spiritclips/bee/logger/colors"
+	"github.com/spiritclips/bee/utils"
 	"gopkg.in/yaml.v2"
 )
 
@@ -159,7 +159,7 @@ func GetBeegoVersion() string {
 		}
 
 	}
-	return "Beego is not installed. Please do consider installing it first: https://github.com/astaxie/beego"
+	return "Beego is not installed. Please do consider installing it first: https://github.com/spiritclips/beego"
 }
 
 func GetGoVersion() string {

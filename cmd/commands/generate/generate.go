@@ -17,13 +17,13 @@ import (
 	"os"
 	"strings"
 
-	"github.com/beego/bee/cmd/commands"
-	"github.com/beego/bee/cmd/commands/version"
-	"github.com/beego/bee/config"
-	"github.com/beego/bee/generate"
-	"github.com/beego/bee/generate/swaggergen"
-	"github.com/beego/bee/logger"
-	"github.com/beego/bee/utils"
+	"github.com/spiritclips/bee/cmd/commands"
+	"github.com/spiritclips/bee/cmd/commands/version"
+	"github.com/spiritclips/bee/config"
+	"github.com/spiritclips/bee/generate"
+	"github.com/spiritclips/bee/generate/swaggergen"
+	"github.com/spiritclips/bee/logger"
+	"github.com/spiritclips/bee/utils"
 )
 
 var CmdGenerate = &commands.Command{

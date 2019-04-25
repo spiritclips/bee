@@ -21,9 +21,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/beego/bee/logger"
-	"github.com/beego/bee/logger/colors"
-	"github.com/beego/bee/utils"
+	"github.com/spiritclips/bee/logger"
+	"github.com/spiritclips/bee/logger/colors"
+	"github.com/spiritclips/bee/utils"
 )
 
 const (
@@ -238,7 +238,7 @@ func GenerateMigration(mname, upsql, downsql, curpath string) {
 const (
 	MigrationHeader = `package main
 						import (
-							"github.com/astaxie/beego/migration"
+							"github.com/spiritclips/beego/migration"
 						)
 
 						// DO NOT MODIFY
