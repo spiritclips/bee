@@ -373,16 +373,76 @@ const (
 	MigrationMainTPL = `package main
 
 import(
+	"fmt"
+	"net/url"
+	"crypto/tls"
+	"crypto/x509"
 	"os"
 
 	"github.com/spiritclips/beego/orm"
 	"github.com/spiritclips/beego/migration"
 
-	_ "{{DriverRepo}}"
+	"{{DriverRepo}}"
 )
 
 func init(){
-	orm.RegisterDataBase("default", "{{DBDriver}}","{{ConnStr}}")
+	connectionString := "{{ConnStr}}"
+
+	url, err := url.Parse(connectionString)
+	if err != nil {
+		fmt.Printf("invalid connection string url: %+v\n", err)
+	}
+
+	re, _ := regexp.MustCompile(`+"`"+`^.+\@tcp\((.+)\:`+"`"+`)
+	hostname := re.FindStringSubmatch(connectionString)
+
+	fmt.Printf("query params: %v", url.Query())
+
+	if err := registerCustomTLSConfig(hostname, url.Query()["tls"]); err != nil {
+		panic(err)
+	}
+
+	orm.RegisterDataBase("default", "{{DBDriver}}",connectionString)
+}
+
+func registerCustomTLSConfig(host, dbSsl string) error {
+	// https://github.com/go-sql-driver/mysql/blob/749ddf1598b47e3cd909414bda735fe790ef3d30/utils.go#L58
+	if dbSsl == "ssl" {
+		// enable custom ssl config for mysql enterprise
+		return mysql.RegisterTLSConfig("ssl", &tls.Config{
+			ServerName: host,
+		})
+	}
+
+	if dbSsl == "rds-ssl" {
+		// enable custom ssl config for mysql RDS / Aurora
+		tlsConfig, err := getRDSSslConfig(host)
+		if err != nil {
+			return err
+		}
+		return mysql.RegisterTLSConfig("rds-ssl", tlsConfig)
+	}
+
+	// Nothing to do because TLS is not ssl or rds-ssl
+	return nil
+}
+
+func getRDSSslConfig(host string) (*tls.Config, error) {
+	pemPath := "/etc/ssl/certs/rds-combined-ca-bundle.pem"
+
+	rootCertPool := x509.NewCertPool()
+	var pem []byte
+	var err error
+	if pem, err = ioutil.ReadFile(pemPath); err != nil {
+		return nil, err
+	}
+	if ok := rootCertPool.AppendCertsFromPEM(pem); !ok {
+		return nil, errors.New("Failed to append PEM.")
+	}
+	return &tls.Config{
+		RootCAs:    rootCertPool,
+		ServerName: host,
+	}, nil
 }
 
 func main(){
