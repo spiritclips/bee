@@ -386,6 +386,7 @@ import(
 )
 
 func init(){
+	fmt.Println("woot!!! migration time!!!")
 	connectionString := "{{ConnStr}}"
 
 	url, err := url.Parse(connectionString)
@@ -398,7 +399,7 @@ func init(){
 
 	fmt.Printf("query params: %v", url.Query())
 
-	if err := registerCustomTLSConfig(hostname, url.Query()["tls"]); err != nil {
+	if err := registerCustomTLSConfig(hostname[1], url.Query()["tls"]); err != nil {
 		panic(err)
 	}
 
@@ -415,6 +416,7 @@ func registerCustomTLSConfig(host, dbSsl string) error {
 	}
 
 	if dbSsl == "rds-ssl" {
+		fmt.Println("rds-ssl cert!")
 		// enable custom ssl config for mysql RDS / Aurora
 		tlsConfig, err := getRDSSslConfig(host)
 		if err != nil {
