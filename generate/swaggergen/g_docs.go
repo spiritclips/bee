@@ -1069,7 +1069,7 @@ func parseIdent(st *ast.Ident, k string, m *swagger.Schema, astPkgs []*ast.Packa
 			m.Enum = append(m.Enum, enums[k])
 		}
 		// Automatically use the first enum value as the example.
-		m.Example = enumValues[keys[0]]
+		//m.Example = enumValues[keys[0]]
 	}
 
 }
@@ -1092,7 +1092,7 @@ func parseStruct(st *ast.StructType, k string, m *swagger.Schema, realTypes *[]s
 			}
 			*realTypes = append(*realTypes, realType)
 			mp := swagger.Propertie{}
-			isObject := false
+			//isObject := false
 			if isSlice {
 				mp.Type = astTypeArray
 				if t, ok := basicTypes[(strings.Replace(realType, "[]", "", -1))]; ok {
@@ -1108,7 +1108,7 @@ func parseStruct(st *ast.StructType, k string, m *swagger.Schema, realTypes *[]s
 				}
 			} else {
 				if sType == astTypeObject {
-					isObject = true
+					//isObject = true
 					mp.Ref = "#/definitions/" + realType
 				} else if isBasicType(realType) {
 					typeFormat := strings.Split(sType, ":")
@@ -1175,9 +1175,9 @@ func parseStruct(st *ast.StructType, k string, m *swagger.Schema, realTypes *[]s
 						mp.Description = desc
 					}
 
-					if example := stag.Get("example"); example != "" && !isObject && !isSlice {
-						mp.Example = str2RealType(example, realType)
-					}
+					//if example := stag.Get("example"); example != "" && !isObject && !isSlice {
+					//	mp.Example = str2RealType(example, realType)
+					//}
 
 					m.Properties[name] = mp
 				}
